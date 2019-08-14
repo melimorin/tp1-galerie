@@ -14,10 +14,16 @@ export default class Galerie {
 		function createBackdrop(index) {
 			var backdrop = document.createElement("div");
 			backdrop.id = "backdrop";
+			backdrop.addEventListener("click", function(event) {
+				document.body.removeChild(backdrop);
+			})
 	
 			var close = document.createElement("span");
 			close.classList.add("close");
 			close.innerHTML = "&#x2716;";
+			close.addEventListener("click", function(event){
+				document.body.removeChild(backdrop);
+			});
 	
 			var precedent = document.createElement("span");
 			precedent.classList.add("precedent");
