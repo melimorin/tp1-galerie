@@ -22,6 +22,7 @@ export default class Galerie {
 			close.classList.add("close");
 			close.innerHTML = "&#x2716;";
 			close.addEventListener("click", function(event){
+				event.stopPropagation();
 				document.body.removeChild(backdrop);
 			});
 	
@@ -29,6 +30,7 @@ export default class Galerie {
 			precedent.classList.add("precedent");
 			precedent.innerHTML = "&#x276e;";
 			precedent.addEventListener("click", function(event) {
+				event.stopPropagation();
 				if (index - 1 < 0) {
 					return;
 				}
@@ -38,6 +40,9 @@ export default class Galerie {
 	
 			var diapo = document.createElement("figure");
 			diapo.classList.add("diapo");
+			diapo.addEventListener("click", function(event) {
+				event.stopPropagation();
+			})
 	
 			var img = document.createElement("img");
 			img.src = images[index].children[0].src;
@@ -50,6 +55,7 @@ export default class Galerie {
 			suivant.classList.add("suivant");
 			suivant.innerHTML = "&#x276f;";
 			suivant.addEventListener("click", function(event) {
+				event.stopPropagation();
 				if (index + 1 >= images.length) {
 					return;
 				}
