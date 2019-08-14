@@ -28,6 +28,13 @@ export default class Galerie {
 			var precedent = document.createElement("span");
 			precedent.classList.add("precedent");
 			precedent.innerHTML = "&#x276e;";
+			precedent.addEventListener("click", function(event) {
+				if (index - 1 < 0) {
+					return;
+				}
+				document.body.removeChild(backdrop);
+				createBackdrop(index - 1);
+			})
 	
 			var diapo = document.createElement("figure");
 			diapo.classList.add("diapo");
@@ -42,6 +49,13 @@ export default class Galerie {
 			var suivant = document.createElement("span");
 			suivant.classList.add("suivant");
 			suivant.innerHTML = "&#x276f;";
+			suivant.addEventListener("click", function(event) {
+				if (index + 1 >= images.length) {
+					return;
+				}
+				document.body.removeChild(backdrop);
+				createBackdrop(index + 1);
+			})
 	
 			var body = document.body;
 	
