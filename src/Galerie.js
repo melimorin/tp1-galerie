@@ -11,7 +11,7 @@ export default class Galerie {
 		var galerie = document.getElementById("galerie");
 		var images = galerie.getElementsByTagName("a");
 
-		function createBackdrop() {
+		function createBackdrop(index) {
 			var backdrop = document.createElement("div");
 			backdrop.id = "backdrop";
 	
@@ -27,11 +27,11 @@ export default class Galerie {
 			diapo.classList.add("diapo");
 	
 			var img = document.createElement("img");
-			img.src = "images/niche.jpg";
-			img.alt = "Chien dans sa niche";
+			img.src = images[index].children[0].src;
+			img.alt = images[index].children[0].alt;
 	
 			var figcaption = document.createElement("figcaption");
-			figcaption.innerHTML = "Chien dans sa niche";
+			figcaption.innerHTML = images[index].children[0].alt;
 	
 			var suivant = document.createElement("span");
 			suivant.classList.add("suivant");
@@ -50,10 +50,10 @@ export default class Galerie {
 			body.appendChild(backdrop);
 		}
 
-		for (var i = 0; i < images.length; i++) {
+		for (let i = 0; i < images.length; i++) {
 			images[i].addEventListener("click", function(event) {
 				event.preventDefault();
-				createBackdrop();
+				createBackdrop(i);
 			})
 		}
 	}
